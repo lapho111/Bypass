@@ -309,178 +309,249 @@
     }
 
     function createUI(taskURL) {
-    const container = document.createElement('div');
-    container.style.position = 'fixed';
-    container.style.bottom = '0px';
-    container.style.left = '50%';
-    container.style.transform = 'translateX(-50%)';
-    container.style.backgroundColor = '#000000';
-    container.style.border = '1px solid #444';
-    container.style.padding = '10px';
-    container.style.zIndex = '9999';
-    container.style.width = '350px';
-    container.style.boxShadow = '0px 4px 6px rgba(0,0,0,0.1)';
-    container.style.borderRadius = '15px';
-    document.body.appendChild(container);
+const container = document.createElement('div');
+container.style.position = 'fixed';
+container.style.bottom = '0px';
+container.style.left = '50%';
+      container.style.transform = 'translateX(-50%)';
+container.style.backgroundColor = '#000000'; 
+container.style.border = '1px solid #444';
+container.style.padding = '10px';
+container.style.zIndex = '9999';
+container.style.width = ' 350px';
+      container.style.boxShadow = '0px 4px 6px rgba (0,0,0,0.1)';
+      container.style.borderRadius = '15px';
+document.body.appendChild(container); 
 
-    // Tạo dòng chữ "Welcome To Lạp Hộ"
-    const des = document.createElement('a');
-    des.textContent = 'Welcome To Lạp Hộ';
-    des.style.margin = '0';
-    des.style.marginBottom = '10px';
-    des.style.fontSize = '10px';
-    des.style.fontStyle = 'italic';
-    des.style.textAlign = 'center';
-    des.style.backgroundImage = 'linear-gradient(90deg, red, orange, brown, green, blue, indigo, violet, indigo, blue, green, brown, orange, red)';
-    des.style.backgroundSize = '200% auto';
-    des.style.color = '#ffffff';
-    des.style.backgroundClip = 'text';
-    des.style.webkitBackgroundClip = 'text';
-    des.style.animation = 'rainbowMove 5s linear infinite';
-    des.style.textDecoration = 'underline';
-    des.href = 'https://www.facebook.com/lapho111';
-    container.appendChild(des);
+      
+      
+      
+      
+      const des = document.createElement('a'); 
+des.textContent = 'Welcome To Lạp Hộ';
+des.style.margin = '0';
+des.style.marginBottom = '10px';
+des.style.fontSize = '10px';
+des.style.fontStyle = 'italic';
+des.style.textAlign = 'center';
+des.style.backgroundImage = 'linear-gradient(90deg, red, orange, brown, green, blue, indigo, violet, indigo, blue, green, brown, orange, red)';
+des.style.backgroundSize = '200% auto';
+des.style.color = '#ffffff'; 
+des.style.backgroundClip = 'text';
+des.style.webkitBackgroundClip = 'text';
+des.style.animation = 'rainbowMove 5s linear infinite';
+des.style.textDecoration = 'underline'; 
+des.href = 'https://www.facebook.com/lapho111';
 
-    const style = document.createElement('style');
-    style.textContent = `
-    @keyframes rainbowMove {
-        0% {
-            background-position: 0% 50%;
-        }
-        100% {
-            background-position: 100% 50%;
-        }
-    }`;
-    document.head.appendChild(style);
-
-    // Tạo title "URL Cần Vượt:"
-    const title = document.createElement('h3');
-    title.textContent = 'URL Cần Vượt:';
-    title.style.margin = '0';
-    title.style.fontWeight = 'bold';
-    title.style.marginBottom = '10px';
-    title.style.fontSize = '20px';
-    title.style.color = '#ffff00';  // Màu vàng
-    title.style.textAlign = 'center';
-    title.style.textShadow = '0 0 5px rgba(255, 255, 255, 0.7), 0 0 10px rgba(255, 255, 255, 0.6), 0 0 15px rgba(255, 255, 255, 0.5)';
-    container.appendChild(title);
-
-    // Tạo ô nhập URL
-    const input = document.createElement('input');
-    input.readOnly = false;
-    input.placeholder = ' Để Yên URL Tự Nhập!';
-    input.style.width = '100%';
-    input.style.marginBottom = '10px';
-    input.style.padding = '8px';
-    input.style.fontSize = '14px';
-    container.appendChild(input);
-
-    // Tạo phần hiển thị URL nhận diện
-    const url = document.createElement('h4');
-    url.textContent = 'URL nhận diện (OCR): ' + taskURL;
-    url.style.margin = '0';
-    url.style.marginBottom = '10px';
-    url.style.fontSize = '13px';
-    url.style.color = 'brown';
-    container.appendChild(url);
-
-    // Tạo checkbox cho các lựa chọn
-    const checkboxRow = document.createElement('div');
-    checkboxRow.style.display = 'flex';
-    checkboxRow.style.alignItems = 'center';
-    checkboxRow.style.marginBottom = '10px';
-    checkboxRow.style.fontSize = '14px';
-    checkboxRow.style.color = 'chocolate';
-
-    // Tạo checkbox tự động chuyển trang và tự động bypass
-    // ...
-
-    container.appendChild(checkboxRow);
-
-    // Tạo button row
-    const buttonRow = document.createElement('div');
-    buttonRow.style.display = 'flex';
-    buttonRow.style.justifyContent = 'space-between';
-    buttonRow.style.fontSize = '14px';
-
-    // Tạo nút Bypass
-    const startBtn = document.createElement('button');
-    startBtn.textContent = 'Bypass';
-    startBtn.style.flex = '1';
-    startBtn.style.padding = '10px';
-    startBtn.style.marginRight = '5px';
-    startBtn.style.borderRadius = '10px';
-    startBtn.style.border = 'none';
-    startBtn.style.cursor = 'pointer';
-    startBtn.style.backgroundColor = '#4B0082'; // Tím đen
-    startBtn.style.color = '#FFD700';           // Vàng óng
-    startBtn.style.fontWeight = 'bold';
-    startBtn.style.boxShadow = '0 4px 8px rgba(0, 0, 0, 0.5)';
-    startBtn.style.transition = 'all 0.2s ease-in-out';
-
-    startBtn.addEventListener('touchstart', () => {
-        startBtn.style.transform = 'translateY(4px)';
-        startBtn.style.boxShadow = '0 2px 4px rgba(0, 0, 0, 0.7)';
-    });
-
-    startBtn.addEventListener('touchend', () => {
-        startBtn.style.transform = 'translateY(0)';
-        startBtn.style.boxShadow = '0 4px 8px rgba(0, 0, 0, 0.5)';
-    });
-
-    startBtn.onclick = async () => {
-        // Logic khi bấm nút Bypass
-    };
-
-    buttonRow.appendChild(startBtn);
-
-    // Tạo nút Đổi Nhiệm Vụ
-    const reloadBtn = document.createElement('button');
-    reloadBtn.textContent = 'Đổi Nhiệm Vụ';
-    reloadBtn.style.flex = '1';
-    reloadBtn.style.padding = '10px';
-    reloadBtn.style.borderRadius = '10px';
-    reloadBtn.style.border = 'none';
-    reloadBtn.style.cursor = 'pointer';
-    reloadBtn.style.backgroundColor = '#4B0082'; // Tím đen
-    reloadBtn.style.color = '#FFD700';           // Vàng óng
-    reloadBtn.style.fontWeight = 'bold';
-    reloadBtn.style.boxShadow = '0 4px 8px rgba(0, 0, 0, 0.5)';
-    reloadBtn.style.transition = 'all 0.2s ease-in-out';
-
-    reloadBtn.addEventListener('touchstart', () => {
-        reloadBtn.style.transform = 'translateY(4px)';
-        reloadBtn.style.boxShadow = '0 2px 4px rgba(0, 0, 0, 0.7)';
-    });
-
-    reloadBtn.addEventListener('touchend', () => {
-        reloadBtn.style.transform = 'translateY(0)';
-        reloadBtn.style.boxShadow = '0 4px 8px rgba(0, 0, 0, 0.5)';
-    });
-
-    reloadBtn.onclick = async () => {
-        // Logic khi bấm nút Đổi Nhiệm Vụ
-    };
-
-    buttonRow.appendChild(reloadBtn);
-    container.appendChild(buttonRow);
-
-    // Thêm phần tử "Báo Lỗi" vào dưới cùng
-    const errorLink = document.createElement('a');
-    errorLink.textContent = 'Báo Lỗi';
-    errorLink.style.textDecoration = 'underline';
-    errorLink.style.color = '#FFD700';
-    errorLink.style.fontSize = '16px';
-    errorLink.style.fontWeight = 'bold';
-    errorLink.style.marginTop = '10px'; // Khoảng cách trên cùng
-    errorLink.style.display = 'block'; // Đảm bảo là block element
-    errorLink.style.textAlign = 'center'; // Căn giữa chữ
-    errorLink.href = 'https://facebook.com/lapho111';
-    errorLink.target = '_blank';
-
-    container.appendChild(errorLink); // Thêm nút Báo Lỗi vào container
+const style = document.createElement('style');
+style.textContent = `
+@keyframes rainbowMove {
+    0% {
+        background-position: 0% 50%;
+    }
+    100% {
+        background-position: 100% 50%;
+    }
 }
+`;
+document.head.appendChild(style);
 
+container.appendChild(des);  // Thêm phần tử vào container
+
+      const title = document.createElement('h3');
+title.textContent = 'URL Cần Vượt:';
+title.style.margin = '0';
+title.style.fontWeight = 'bold';
+title.style.marginBottom = '10px';
+title.style.fontSize = '20px';
+title.style.color = '#ffff00';  // Màu vàng cho chữ
+title.style.textAlign = 'center'; // Căn giữa văn bản trong phần tử
+title.style.textShadow = '0 0 5px rgba(255, 255, 255, 0.7), 0 0 10px rgba(255, 255, 255, 0.6), 0 0 15px rgba(255, 255, 255, 0.5)'; // Hiệu ứng hào quang nhẹ
+container.appendChild(title);
+       
+        const input = document.createElement('input');
+        input.readOnly = false;
+        input.placeholder = ' Để Yên URL Tự Nhập!';
+        input.style.width = '100%';
+        input.style.marginBottom = '10px';
+        input.style.padding = '8px';
+        input.style.fontSize = '14px';
+        container.appendChild(input);
+
+        const url = document.createElement('h4');
+        url.textContent = 'URL nhận diện (OCR): ' + taskURL;
+        url.style.margin = '0';
+        url.style.marginBottom = '10px';
+        url.style.fontSize = '13px';
+        url.style.color = 'brown';
+
+        container.appendChild(url);
+
+        const checkboxRow = document.createElement('div');
+        checkboxRow.style.display = 'flex';
+        checkboxRow.style.alignItems = 'center';
+        checkboxRow.style.marginBottom = '10px';
+        checkboxRow.style.fontSize = '14px';
+        checkboxRow.style.color = 'chocolate';
+
+        const fetchCheckbox = document.createElement('input');
+        fetchCheckbox.type = 'checkbox';
+        fetchCheckbox.id = 'fetchCode';
+        fetchCheckbox.checked = GM_getValue('fetchCode', false);
+        fetchCheckbox.onchange = () => {
+            GM_setValue('fetchCode', fetchCheckbox.checked);
+        };
+
+        const fetchLabel = document.createElement('label');
+        fetchLabel.htmlFor = 'fetchCode';
+        fetchLabel.textContent = 'Auto chuyển trang';
+        fetchLabel.style.marginLeft = '5px';
+        fetchLabel.style.marginRight = '15px';
+
+        const fetchContainer = document.createElement('div');
+        fetchContainer.style.display = 'flex';
+        fetchContainer.style.alignItems = 'center';
+        fetchContainer.appendChild(fetchCheckbox);
+        fetchContainer.appendChild(fetchLabel);
+
+        const autoStartCheckbox = document.createElement('input');
+        autoStartCheckbox.type = 'checkbox';
+        autoStartCheckbox.id = 'autoStart';
+        autoStartCheckbox.checked = GM_getValue('autoStart', false);
+        autoStartCheckbox.onchange = () => {
+            GM_setValue('autoStart', autoStartCheckbox.checked);
+        };
+
+        const autoStartLabel = document.createElement('label');
+        autoStartLabel.htmlFor = 'autoStart';
+        autoStartLabel.textContent = 'Auto Bypass (90%)';
+        autoStartLabel.style.marginLeft = '5px';
+
+        const autoStartContainer = document.createElement('div');
+        autoStartContainer.style.display = 'flex';
+        autoStartContainer.style.alignItems = 'center';
+        autoStartContainer.appendChild(autoStartCheckbox);
+        autoStartContainer.appendChild(autoStartLabel);
+
+        checkboxRow.appendChild(fetchContainer);
+        checkboxRow.appendChild(autoStartContainer);
+
+        container.appendChild(checkboxRow);
+
+        const buttonRow = document.createElement('div');
+        buttonRow.style.display = 'flex';
+        buttonRow.style.justifyContent = 'space-between';
+        buttonRow.style.fontSize = '14px';
+
+   const startBtn = document.createElement('button');
+startBtn.textContent = 'Bypass';
+startBtn.style.flex = '1';
+startBtn.style.padding = '10px';
+startBtn.style.marginRight = '5px';
+startBtn.style.borderRadius = '10px';
+startBtn.style.border = 'none';
+startBtn.style.cursor = 'pointer';
+startBtn.style.backgroundColor = '#4B0082'; // Tím đen
+startBtn.style.color = '#FFD700';           // Vàng óng
+startBtn.style.fontWeight = 'bold';
+startBtn.style.boxShadow = '0 4px 8px rgba(0, 0, 0, 0.5)'; // Hiệu ứng nổi 3D
+startBtn.style.textShadow = '0 0 5px rgba(255, 255, 0, 0.8), 0 0 10px rgba(255, 255, 0, 0.6)';
+startBtn.style.border = '1px solid #FFD700'; // Viền màu vàng óng, độ dày 2px
+startBtn.style.boxSizing = 'border-box'
+startBtn.style.transition = 'all 0.2s ease-in-out'; // Hiệu ứng mượt mà cho các thay đổi
+
+// Hiệu ứng khi nhấn (nút di chuyển xuống tạo cảm giác ấn)
+startBtn.addEventListener('touchstart', () => {
+    startBtn.style.transform = 'translateY(4px)'; // Dịch chuyển nút xuống 4px khi nhấn
+    startBtn.style.boxShadow = '0 2px 4px rgba(0, 0, 0, 0.7)'; // Bóng dày hơn khi nhấn
+});
+
+// Hiệu ứng khi thả tay (trở lại vị trí ban đầu)
+startBtn.addEventListener('touchend', () => {
+    startBtn.style.transform = 'translateY(0)'; // Trả lại vị trí ban đầu
+    startBtn.style.boxShadow = '0 4px 8px rgba(0, 0, 0, 0.5)'; // Trả lại bóng nổi
+});
+
+        startBtn.onclick = async () => {
+            try {
+                startBtn.disabled = true;
+                input.readOnly = true;
+                const check = input.value || taskURL;
+                input.value = 'Đang xử lý...';
+                const code = await startBypass(check);
+
+                if (code) {
+                    let countdown = 62;
+                    const countdownInterval = setInterval(() => {
+                        input.value = `Vui lòng chờ: ${countdown} giây`;
+                        countdown--;
+                        if (countdown < 0) {
+                            clearInterval(countdownInterval);
+                            if (fetchCheckbox.checked) {
+                                input.value = "Code: " + code + " - Đang chuyển trang...";
+                                fetchResult(code);
+                            } else {
+                                input.value = "Code: " + code;
+                            }
+                            startBtn.disabled = false;
+                        }
+                    }, 1000);
+                } else {
+                    input.readOnly = false;
+                    console.error("Không có mã trả về từ startBypass");
+                    input.value = "Lỗi! Vui lòng xem lại URL.";
+                }
+
+                sessionStorage.removeItem("ymnclk");
+                localStorage.removeItem("codexn");
+            } catch (error) {
+                console.error("Lỗi khi gọi startBypass:", error);
+            }
+        };
+
+        buttonRow.appendChild(startBtn);
+
+const reloadBtn = document.createElement('button');
+reloadBtn.textContent = 'Đổi Nhiệm Vụ';
+reloadBtn.style.flex = '1';
+reloadBtn.style.padding = '10px';
+reloadBtn.style.borderRadius = '10px';
+reloadBtn.style.border = 'none';
+reloadBtn.style.cursor = 'pointer';
+reloadBtn.style.backgroundColor = '#4B0082'; // Màu tím đậm
+reloadBtn.style.color = '#FFD700';          // Màu vàng óng
+reloadBtn.style.fontWeight = 'bold';
+reloadBtn.style.boxShadow = '0 4px 8px rgba(0, 0, 0, 0.5)'; // Hiệu ứng bóng 3D
+reloadBtn.style.textShadow = '0 0 5px rgba(255, 255, 0, 0.8), 0 0 10px rgba(255, 255, 0, 0.6)';
+reloadBtn.style.transition = 'all 0.2s ease-in-out'; // Hiệu ứng mượt mà cho các thay đổi
+reloadBtn.style.border = '1px solid #FFD700'; // Viền màu vàng óng, độ dày 2px
+reloadBtn.style.boxSizing = 'border-box'
+// Hiệu ứng khi nhấn (nút di chuyển xuống tạo cảm giác ấn)
+reloadBtn.addEventListener('touchstart', () => {
+    reloadBtn.style.transform = 'translateY(4px)'; // Dịch chuyển nút xuống 4px khi nhấn
+    reloadBtn.style.boxShadow = '0 2px 4px rgba(0, 0, 0, 0.7)'; // Bóng dày hơn khi nhấn
+});
+
+// Hiệu ứng khi thả tay (trở lại vị trí ban đầu)
+reloadBtn.addEventListener('touchend', () => {
+    reloadBtn.style.transform = 'translateY(0)'; // Trả lại vị trí ban đầu
+    reloadBtn.style.boxShadow = '0 4px 8px rgba(0, 0, 0, 0.5)'; // Trả lại bóng nổi
+});
+        reloadBtn.onclick = async () => {
+            input.readOnly = true;
+            input.value = 'Đang Đổi Nhiệm Vụ...';
+            doiNhiemvu();
+        };
+
+        buttonRow.appendChild(reloadBtn);
+        container.appendChild(buttonRow);
+
+        document.body.appendChild(container);
+
+        if (autoStartCheckbox.checked) {
+            startBtn.click();
+        }
+    }
         const url = window.location.href;
         window.onload = () => {
             if (url.includes('https://yeumoney.com/')) {
@@ -502,5 +573,39 @@
                 completeGoogleForms();
             }
         };
+// Sau khi bạn đã thêm các nút vào container (nút Bypass và nút Đổi Nhiệm Vụ)
+
+// Tạo phần tử "Báo Lỗi"
+const errorLink = document.createElement('a');
+errorLink.textContent = 'Báo Lỗi'; // Dòng chữ "Báo Lỗi"
+errorLink.style.textDecoration = 'underline'; // Gạch chân chữ
+errorLink.style.color = '#FFD700'; // Màu chữ vàng óng
+errorLink.style.fontSize = '16px'; // Kích thước chữ
+errorLink.style.fontWeight = 'bold';
+errorLink.style.marginTop = '10px'; // Khoảng cách với các nút trên
+errorLink.style.display = 'block'; // Đảm bảo phần tử hiển thị dưới dạng block
+errorLink.style.textAlign = 'center'; // Căn giữa chữ
+errorLink.href = 'https://facebook.com/lapho111'; // Đường link dẫn tới Facebook
+errorLink.target = '_blank'; // Mở link trong tab mới
+
+// Đẩy các phần tử đã có lên một chút bằng cách thay đổi margin-top của container
+container.style.marginBottom = '20px';  // Thêm khoảng cách ở dưới container (giúp tạo khoảng cách cho nút Báo Lỗi)
+
+container.appendChild(startBtn); // Thêm nút Bypass vào container
+container.appendChild(reloadBtn); // Thêm nút Đổi Nhiệm Vụ vào container
+container.appendChild(errorLink); // Thêm nút Báo Lỗi vào container
     }
 )();
+
+
+
+
+
+
+
+
+
+
+
+Dịch
+

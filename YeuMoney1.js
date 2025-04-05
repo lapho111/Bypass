@@ -309,57 +309,66 @@
     }
 
     function createUI(taskURL) {
-        const container = document.createElement('div');
-        container.style.position = 'fixed';
-        container.style.top = '10px';
-        container.style.right = '10px';
-        container.style.backgroundColor = '#f9f9f9';
-        container.style.border = '1px solid #ccc';
-        container.style.padding = '10px';
-        container.style.zIndex = '9999';
-        container.style.width = '350px';
-        container.style.boxShadow = '0px 4px 6px rgba(0, 0, 0, 0.1)';
-        container.style.borderRadius = '10px';
+const container = document.createElement('div');
+container.style.position = 'fixed';
+container.style.bottom = '0px';
+container.style.left = '50%';
+      container.style.transform = 'translateX(-50%)';
+container.style.backgroundColor = '#000000'; 
+container.style.border = '1px solid #444';
+container.style.padding = '10px';
+container.style.zIndex = '9999';
+container.style.width = ' 350px';
+      container.style.boxShadow = '0px 4px 6px rgba (0,0,0,0.1)';
+      container.style.borderRadius = '15px';
+document.body.appendChild(container); 
 
-        const des = document.createElement('h4');
-        des.textContent = 'Welcome To Lạp Hộ';
-        des.style.margin = '0';
-        des.style.marginBottom = '10px';
-        des.style.fontSize = '10px';
-        des.style.fontStyle = 'italic';
-        des.style.textAlign = 'center';
-        des.style.backgroundImage = 'linear-gradient(90deg, red, orange, brown, green, blue, indigo, violet, indigo, blue, green, brown, orange, red)';
-        des.style.backgroundSize = '200% auto';
-        des.style.color = 'transparent';
-        des.style.backgroundClip = 'text';
-        des.style.webkitBackgroundClip = 'text';
-        des.style.animation = 'rainbowMove 5s linear infinite';
+      
+      
+      
+      
+      const des = document.createElement('a'); 
+des.textContent = 'Welcome To Lạp Hộ';
+des.style.margin = '0';
+des.style.marginBottom = '10px';
+des.style.fontSize = '10px';
+des.style.fontStyle = 'italic';
+des.style.textAlign = 'center';
+des.style.backgroundImage = 'linear-gradient(90deg, red, orange, brown, green, blue, indigo, violet, indigo, blue, green, brown, orange, red)';
+des.style.backgroundSize = '200% auto';
+des.style.color = '#ffffff'; 
+des.style.backgroundClip = 'text';
+des.style.webkitBackgroundClip = 'text';
+des.style.animation = 'rainbowMove 5s linear infinite';
+des.style.textDecoration = 'underline'; 
+des.href = 'https://www.facebook.com/lapho111';
 
-        const style = document.createElement('style');
-        style.textContent = `
-    @keyframes rainbowMove {
-        0% {
-            background-position: 0% 50%;
-        }
-        100% {
-            background-position: 100% 50%;
-        }
+const style = document.createElement('style');
+style.textContent = `
+@keyframes rainbowMove {
+    0% {
+        background-position: 0% 50%;
     }
+    100% {
+        background-position: 100% 50%;
+    }
+}
 `;
-        document.head.appendChild(style);
+document.head.appendChild(style);
 
-        container.appendChild(des);
+container.appendChild(des);  // Thêm phần tử vào container
 
-
-        const title = document.createElement('h3');
-        title.textContent = 'URL Cần Vượt:';
-        title.style.margin = '0';
-        title.style.fontWeight = 'bold';
-        title.style.marginBottom = '10px';
-        title.style.fontSize = '16px';
-        title.style.color = 'darkred';
-        container.appendChild(title);
-
+      const title = document.createElement('h3');
+title.textContent = 'URL Cần Vượt:';
+title.style.margin = '0';
+title.style.fontWeight = 'bold';
+title.style.marginBottom = '10px';
+title.style.fontSize = '20px';
+title.style.color = '#ffff00';  // Màu vàng cho chữ
+title.style.textAlign = 'center'; // Căn giữa văn bản trong phần tử
+title.style.textShadow = '0 0 5px rgba(255, 255, 255, 0.7), 0 0 10px rgba(255, 255, 255, 0.6), 0 0 15px rgba(255, 255, 255, 0.5)'; // Hiệu ứng hào quang nhẹ
+container.appendChild(title);
+       
         const input = document.createElement('input');
         input.readOnly = false;
         input.placeholder = ' Để Yên URL Tự Nhập!';

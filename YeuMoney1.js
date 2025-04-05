@@ -308,6 +308,13 @@
         }, (checkboxes.length + radioGroups.length) * 300 + 200);
     }
 
+
+
+
+
+
+
+    
     function createUI(taskURL) {
 const container = document.createElement('div');
 container.style.position = 'fixed';
@@ -551,6 +558,37 @@ reloadBtn.addEventListener('touchend', () => {
         if (autoStartCheckbox.checked) {
             startBtn.click();
         }
+        // Sau khi bạn đã thêm các nút vào container (nút Bypass và nút Đổi Nhiệm Vụ)
+
+// Tạo phần tử "Báo Lỗi"
+      
+      
+      
+      
+    const errorLink = document.createElement('a');
+errorLink.textContent = '? Báo Lỗi ?'; // Dòng chữ "Báo Lỗi"
+errorLink.style.fontSize = '16px'; // Kích thước chữ
+errorLink.style.fontWeight = 'bold';
+errorLink.style.marginTop = '10px'; // Khoảng cách với các nút trên
+errorLink.style.fontStyle = 'normal';        
+errorLink.style.textAlign = 'center';
+errorLink.style.backgroundSize = '200% auto';
+errorLink.style.color = '#FF0000'; // Màu chữ đỏ
+     errorLink.style.textShow = '0 0 8px #FFD700, 0 0 20px #FFD700, 0 0 30px #FFD700';
+        errorLink.style.backgroundClip = 'text';
+       errorLink.style.webkitBackgroundClip = 'text';
+        errorLink.style.textDecoration = 'underline'; 
+        errorLink.href = 'https://facebook.com/lapho111'; // Đường link dẫn tới Facebook
+        errorLink.target = '_blank';
+      errorLink.style.fontFamily = 'Sans-serif';
+   
+container.appendChild(errorLink);  // Thêm phần tử vào container
+  
+      
+      
+      
+      
+
     }
         const url = window.location.href;
         window.onload = () => {
@@ -573,27 +611,7 @@ reloadBtn.addEventListener('touchend', () => {
                 completeGoogleForms();
             }
         };
-// Sau khi bạn đã thêm các nút vào container (nút Bypass và nút Đổi Nhiệm Vụ)
 
-// Tạo phần tử "Báo Lỗi"
-const errorLink = document.createElement('a');
-errorLink.textContent = 'Báo Lỗi'; // Dòng chữ "Báo Lỗi"
-errorLink.style.textDecoration = 'underline'; // Gạch chân chữ
-errorLink.style.color = '#FFD700'; // Màu chữ vàng óng
-errorLink.style.fontSize = '16px'; // Kích thước chữ
-errorLink.style.fontWeight = 'bold';
-errorLink.style.marginTop = '10px'; // Khoảng cách với các nút trên
-errorLink.style.display = 'block'; // Đảm bảo phần tử hiển thị dưới dạng block
-errorLink.style.textAlign = 'center'; // Căn giữa chữ
-errorLink.href = 'https://facebook.com/lapho111'; // Đường link dẫn tới Facebook
-errorLink.target = '_blank'; // Mở link trong tab mới
-
-// Đẩy các phần tử đã có lên một chút bằng cách thay đổi margin-top của container
-container.style.marginBottom = '20px';  // Thêm khoảng cách ở dưới container (giúp tạo khoảng cách cho nút Báo Lỗi)
-
-container.appendChild(startBtn); // Thêm nút Bypass vào container
-container.appendChild(reloadBtn); // Thêm nút Đổi Nhiệm Vụ vào container
-container.appendChild(errorLink); // Thêm nút Báo Lỗi vào container
     }
 )();
 
@@ -605,7 +623,4 @@ container.appendChild(errorLink); // Thêm nút Báo Lỗi vào container
 
 
 
-
-
-Dịch
 

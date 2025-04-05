@@ -323,7 +323,7 @@
         container.style.borderRadius = '10px';
 
         const des = document.createElement('h4');
-        des.textContent = 'Script By phantatdung';
+        des.textContent = 'Weolcome to Lạp Hộ';
         des.style.margin = '0';
         des.style.marginBottom = '10px';
         des.style.fontSize = '10px';
@@ -353,7 +353,7 @@
 
 
         const title = document.createElement('h3');
-        title.textContent = 'Nhập URL nhiệm vụ:';
+        title.textContent = 'URL nhiệm vụ:';
         title.style.margin = '0';
         title.style.fontWeight = 'bold';
         title.style.marginBottom = '10px';
@@ -394,12 +394,7 @@
             GM_setValue('fetchCode', fetchCheckbox.checked);
         };
 
-        const fetchLabel = document.createElement('label');
-        fetchLabel.htmlFor = 'fetchCode';
-        fetchLabel.textContent = 'Auto chuyển trang';
-        fetchLabel.style.marginLeft = '5px';
-        fetchLabel.style.marginRight = '15px';
-
+        
         const fetchContainer = document.createElement('div');
         fetchContainer.style.display = 'flex';
         fetchContainer.style.alignItems = 'center';
@@ -436,7 +431,7 @@
         buttonRow.style.fontSize = '14px';
 
         const startBtn = document.createElement('button');
-        startBtn.textContent = 'Bắt đầu Bypass';
+        startBtn.textContent = 'Bypass';
         startBtn.style.flex = '1';
         startBtn.style.padding = '7px';
         startBtn.style.backgroundColor = '#4CAF50';

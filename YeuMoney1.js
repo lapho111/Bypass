@@ -1,7 +1,6 @@
 // ==UserScript==
 // @name         Yeumoney
 // @namespace    http://tampermonkey.net/
-// @version      3.0
 // @description  Bypass Yeumoney
 // @author       LapHo
 // @match        https://yeumoney.com/*
@@ -323,7 +322,7 @@
         container.style.borderRadius = '10px';
 
         const des = document.createElement('h4');
-        des.textContent = 'Welcome To Lạp Hộ';
+        des.textContent = 'Script By phantatdung';
         des.style.margin = '0';
         des.style.marginBottom = '10px';
         des.style.fontSize = '10px';
@@ -353,7 +352,7 @@
 
 
         const title = document.createElement('h3');
-        title.textContent = 'URL cần vượt:';
+        title.textContent = 'Nhập URL nhiệm vụ:';
         title.style.margin = '0';
         title.style.fontWeight = 'bold';
         title.style.marginBottom = '10px';
@@ -363,7 +362,7 @@
 
         const input = document.createElement('input');
         input.readOnly = false;
-        input.placeholder = 'Để nguyên Nó Tự Tìm!';
+        input.placeholder = 'Nếu để trống sẽ sử dụng URL nhận diện!';
         input.style.width = '100%';
         input.style.marginBottom = '10px';
         input.style.padding = '8px';

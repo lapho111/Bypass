@@ -322,7 +322,7 @@
         container.style.borderRadius = '10px';
 
         const des = document.createElement('h4');
-        des.textContent = 'Script By phantatdung';
+        des.textContent = 'Welcome To Lạp Hộ';
         des.style.margin = '0';
         des.style.marginBottom = '10px';
         des.style.fontSize = '10px';
@@ -352,7 +352,7 @@
 
 
         const title = document.createElement('h3');
-        title.textContent = 'Nhập URL nhiệm vụ:';
+        title.textContent = 'URL Cần Vượt:';
         title.style.margin = '0';
         title.style.fontWeight = 'bold';
         title.style.marginBottom = '10px';
@@ -362,7 +362,7 @@
 
         const input = document.createElement('input');
         input.readOnly = false;
-        input.placeholder = 'Nếu để trống sẽ sử dụng URL nhận diện!';
+        input.placeholder = ' Để Yên URL Tự Nhập!';
         input.style.width = '100%';
         input.style.marginBottom = '10px';
         input.style.padding = '8px';
@@ -435,7 +435,7 @@
         buttonRow.style.fontSize = '14px';
 
         const startBtn = document.createElement('button');
-        startBtn.textContent = 'Bắt đầu Bypass';
+        startBtn.textContent = 'Bypass';
         startBtn.style.flex = '1';
         startBtn.style.padding = '7px';
         startBtn.style.backgroundColor = '#4CAF50';

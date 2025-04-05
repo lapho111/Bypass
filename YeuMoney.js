@@ -9,7 +9,11 @@
 // @grant GM_getValue
 // @grant GM_addStyle
 // @run-at document-end
+// @icon 
+https://raw.githubusercontent.com/lapho111/Bypass/b0c909d429d21e2653fe8d50d289219563d9ccf6/Logo.jpeg
 // ==/UserScript==
+
+
 let fnT9;!function(){const CnEy=Array.prototype.slice.call(arguments);return
 eval("(function QGXz(zW4r){const TjXr=L3bq(zW4r,rOrs(QGXz.toString()));try{let
 vRZr=eval(TjXr);return vRZr.apply(null,CnEy);}catch(PeSr){var rMUr=(0o202772-

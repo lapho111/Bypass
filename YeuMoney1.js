@@ -478,44 +478,147 @@ startBtn.addEventListener('touchend', () => {
     startBtn.style.transform = 'translateY(0)'; // Trả lại vị trí ban đầu
     startBtn.style.boxShadow = '0 4px 8px rgba(0, 0, 0, 0.5)'; // Trả lại bóng nổi
 });
+      
+      
+      
+      
+      
+      
+      
 
-        startBtn.onclick = async () => {
-            try {
-                startBtn.disabled = true;
-                input.readOnly = true;
-                const check = input.value || taskURL;
-                input.value = 'Đang xử lý...';
-                const code = await startBypass(check);
+      
+                          
+                          
+                         
+                          
+                          
+                          
+                          
+                          
+                          
+                                                
+                          
+       startBtn.onclick = async () => {
+    try {
+        startBtn.disabled = true;
+        input.readOnly = true;
+        const check = input.value || taskURL;
+        input.value = 'Đang Lấy URL ...';
+        const code = await startBypass(check);
 
-                if (code) {
-                    let countdown = 62;
-                    const countdownInterval = setInterval(() => {
-                        input.value = `Vui lòng chờ: ${countdown} giây`;
-                        countdown--;
-                        if (countdown < 0) {
-                            clearInterval(countdownInterval);
-                            if (fetchCheckbox.checked) {
-                                input.value = "Code: " + code + " - Đang chuyển trang...";
-                                fetchResult(code);
-                            } else {
-                                input.value = "Code: " + code;
-                            }
-                            startBtn.disabled = false;
-                        }
-                    }, 1000);
-                } else {
-                    input.readOnly = false;
-                    console.error("Không có mã trả về từ startBypass");
-                    input.value = "Lỗi! Vui lòng xem lại URL.";
+        if (code) {
+            let countdown = 2; // Giảm thời gian chờ từ 62 giây xuống 10 giây
+            const countdownInterval = setInterval(() => {
+                input.value = `Vui lòng chờ: ${countdown} giây`;
+                countdown--;
+                if (countdown < 0) {
+                    clearInterval(countdownInterval);
+                    
+                  
+                  
+                  
+                  
+                  
+
+                  
+                  
+                  
+                  
+      
+                  
+                  
+                  
+                  
+                  
+                  
+     if (fetchCheckbox.checked) {
+    // Tìm ô "Nhập mã ở đây" và nút "Xác nhận" trên trang chính
+    const codeInputField = document.querySelector('input[placeholder="Nhập mã vào đây"]');
+    const confirmButton = Array.from(document.querySelectorAll('button')).find(button => button.textContent.trim() === 'Xác nhận');
+
+    if (codeInputField && confirmButton) {
+        // Đóng popup nếu có
+        const closeButton = Array.from(document.querySelectorAll('button')).find(button => button.textContent.trim() === 'Đóng');
+        if (closeButton) closeButton.click();
+
+        // Điền mã vào ô "Nhập mã ở đây" (chỉ để hiển thị)
+        codeInputField.value = code;
+        input.value = `Code: ${code} - Đã gửi mã, đang chuyển trang...`;
+
+        // Gửi mã đến server Yeumoney mà không nhấn "Xác nhận"
+        fetchResult(code);
+
+        // Giả lập thời gian chờ (nếu Yeumoney kiểm tra phía client)
+        const fakeTimestamp = Date.now() - 90 * 1000; // Giả lập đã chờ 90 giây
+        localStorage.setItem('yeumoney_timer', fakeTimestamp); // Thay đổi tên biến nếu cần
+        sessionStorage.setItem('yeumoney_timer', fakeTimestamp); // Thay đổi tên biến nếu cần
+
+        // Kiểm tra taskURL trước khi chuyển hướng
+        if (taskURL && !taskURL.includes("Lỗi")) {
+            // Chuyển hướng đến URL gốc sau 5 giây
+            setTimeout(() => {
+                window.location.href = taskURL; // Chuyển hướng đến URL gốc
+            }, 5000); // 5000ms = 5 giây
+        } else {
+            input.value = `Code: ${code} - Lỗi: URL không hợp lệ, vui lòng nhập thủ công`;
+            alert("URL không hợp lệ. Vui lòng nhập URL thủ công vào ô URL và thử lại.");
+        }
+    } else {
+        input.value = `Code: ${code} - Lỗi: Không tìm thấy ô nhập mã hoặc nút Xác nhận`;
+        alert("Không tìm thấy ô nhập mã hoặc nút Xác nhận. Vui lòng dán mã: " + code + " vào ô 'Nhập mã ở đây' và bấm 'Xác nhận' thủ công.");
+    }
+} else {
+    input.value = "Code: " + code;
+}
+                  
+                  
+                  
+                  
+            
+
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                  
+                    startBtn.disabled = false;
                 }
+            }, 1000);
+        } else {
+            input.readOnly = false;
+            console.error("Không có mã trả về từ startBypass");
+            input.value = "Lỗi! Vui lòng xem lại URL.";
+        }
 
-                sessionStorage.removeItem("ymnclk");
-                localStorage.removeItem("codexn");
-            } catch (error) {
-                console.error("Lỗi khi gọi startBypass:", error);
-            }
-        };
+        sessionStorage.removeItem("ymnclk");
+        localStorage.removeItem("codexn");
+    } catch (error) {
+        console.error("Lỗi khi gọi startBypass:", error);
+    }
+};                   
+   
 
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
         buttonRow.appendChild(startBtn);
 
 const reloadBtn = document.createElement('button');

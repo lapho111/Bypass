@@ -318,6 +318,7 @@
     function createUI(taskURL) {
 const container = document.createElement('div');
 container.style.position = 'fixed';
+      container.style.height = 'auto';
 container.style.bottom = '0px';
 container.style.left = '50%';
       container.style.transform = 'translateX(-50%)';
@@ -334,6 +335,59 @@ document.body.appendChild(container);
       
       
       
+      
+      
+      
+      
+      const closeBtn = document.createElement('button');
+closeBtn.style.position = 'absolute';
+closeBtn.style.top = '5px';
+closeBtn.style.right = '5px';
+closeBtn.style.backgroundColor = 'transparent';
+closeBtn.style.border = 'none';
+closeBtn.style.borderRadius = '50%';
+closeBtn.style.width = '25px';
+closeBtn.style.height = '25px';
+closeBtn.style.display = 'flex';
+closeBtn.style.alignItems = 'center';
+closeBtn.style.justifyContent = 'center';
+closeBtn.style.cursor = 'pointer';
+closeBtn.style.boxShadow = '0 2px 4px rgba(0, 0, 0, 0.3)';
+
+const closeIcon = document.createElement('img');
+closeIcon.src = 'https://raw.githubusercontent.com/lapho111/Bypass/refs/heads/main/IMG_3520.webp';
+closeIcon.style.width = '15px';
+closeIcon.style.height = '15px';
+
+closeIcon.onerror = () => {
+    console.error('Không thể tải icon từ URL. Thay thế bằng chữ "X".');
+    closeBtn.textContent = 'X';
+    closeBtn.style.color = '#ffffff';
+};
+closeBtn.appendChild(closeIcon);
+
+closeBtn.onclick = (event) => {
+    event.preventDefault();
+    event.stopPropagation();
+    if (container && container.parentNode) {
+        container.remove();
+    }
+};
+
+container.appendChild(closeBtn);
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      
       const des = document.createElement('a'); 
 des.textContent = 'Welcome To Lạp Hộ';
 des.style.margin = '0';
@@ -341,6 +395,7 @@ des.style.marginBottom = '10px';
 des.style.fontSize = '10px';
 des.style.fontStyle = 'italic';
 des.style.textAlign = 'center';
+des.style.display = ' block';
 des.style.backgroundImage = 'linear-gradient(90deg, red, orange, brown, green, blue, indigo, violet, indigo, blue, green, brown, orange, red)';
 des.style.backgroundSize = '200% auto';
 des.style.color = '#ffffff'; 
@@ -366,11 +421,11 @@ document.head.appendChild(style);
 container.appendChild(des);  // Thêm phần tử vào container
 
       const title = document.createElement('h3');
-title.textContent = 'URL Cần Vượt:';
+title.textContent = 'Bypass YeuMoney:';
 title.style.margin = '0';
 title.style.fontWeight = 'bold';
 title.style.marginBottom = '10px';
-title.style.fontSize = '20px';
+title.style.fontSize = '25px';
 title.style.color = '#ffff00';  // Màu vàng
 title.style.textAlign = 'center'; // Căn giữa
 title.style.textShadow = '0 0 5px rgba(255, 255, 255, 0.7), 0 0 10px rgba(255, 255, 255, 0.6), 0 0 15px rgba(255, 255, 255, 0.5)'; // Hiệu ứng hào quang nhẹ

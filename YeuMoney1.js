@@ -371,8 +371,8 @@ title.style.margin = '0';
 title.style.fontWeight = 'bold';
 title.style.marginBottom = '10px';
 title.style.fontSize = '20px';
-title.style.color = '#ffff00';  // Màu vàng cho chữ
-title.style.textAlign = 'center'; // Căn giữa văn bản trong phần tử
+title.style.color = '#ffff00';  // Màu vàng
+title.style.textAlign = 'center'; // Căn giữa
 title.style.textShadow = '0 0 5px rgba(255, 255, 255, 0.7), 0 0 10px rgba(255, 255, 255, 0.6), 0 0 15px rgba(255, 255, 255, 0.5)'; // Hiệu ứng hào quang nhẹ
 container.appendChild(title);
        
@@ -386,7 +386,7 @@ container.appendChild(title);
         container.appendChild(input);
 
         const url = document.createElement('h4');
-        url.textContent = 'URL nhận diện (OCR): ' + taskURL;
+        url.textContent = 'URL nhận diện (URL): ' + taskURL;
         url.style.margin = '0';
         url.style.marginBottom = '10px';
         url.style.fontSize = '13px';
@@ -461,42 +461,25 @@ startBtn.style.cursor = 'pointer';
 startBtn.style.backgroundColor = '#4B0082'; // Tím đen
 startBtn.style.color = '#FFD700';           // Vàng óng
 startBtn.style.fontWeight = 'bold';
-startBtn.style.boxShadow = '0 4px 8px rgba(0, 0, 0, 0.5)'; // Hiệu ứng nổi 3D
+startBtn.style.boxShadow = '0 4px 8px rgba(0, 0, 0, 0.5)'; // 3D 
 startBtn.style.textShadow = '0 0 5px rgba(255, 255, 0, 0.8), 0 0 10px rgba(255, 255, 0, 0.6)';
-startBtn.style.border = '1px solid #FFD700'; // Viền màu vàng óng, độ dày 2px
+startBtn.style.border = '1px solid #FFD700'; // Viềnvàng óng
 startBtn.style.boxSizing = 'border-box'
-startBtn.style.transition = 'all 0.2s ease-in-out'; // Hiệu ứng mượt mà cho các thay đổi
+startBtn.style.transition = 'all 0.2s ease-in-out'; // Lam Muot
 
-// Hiệu ứng khi nhấn (nút di chuyển xuống tạo cảm giác ấn)
+// Hiệu ứng an nut
 startBtn.addEventListener('touchstart', () => {
-    startBtn.style.transform = 'translateY(4px)'; // Dịch chuyển nút xuống 4px khi nhấn
-    startBtn.style.boxShadow = '0 2px 4px rgba(0, 0, 0, 0.7)'; // Bóng dày hơn khi nhấn
+    startBtn.style.transform = 'translateY(4px)'; 
+    startBtn.style.boxShadow = '0 2px 4px rgba(0, 0, 0, 0.7)'; 
 });
 
-// Hiệu ứng khi thả tay (trở lại vị trí ban đầu)
+// Hiệu ứng tha nut
 startBtn.addEventListener('touchend', () => {
-    startBtn.style.transform = 'translateY(0)'; // Trả lại vị trí ban đầu
-    startBtn.style.boxShadow = '0 4px 8px rgba(0, 0, 0, 0.5)'; // Trả lại bóng nổi
+    startBtn.style.transform = 'translateY(0)'; 
+    startBtn.style.boxShadow = '0 4px 8px rgba(0, 0, 0, 0.5)';
 });
       
-      
-      
-      
-      
-      
-      
-
-      
-                          
-                          
-                         
-                          
-                          
-                          
-                          
-                          
-                          
-                                                
+                                       
                           
        startBtn.onclick = async () => {
     try {
@@ -507,69 +490,52 @@ startBtn.addEventListener('touchend', () => {
         const code = await startBypass(check);
 
         if (code) {
-            let countdown = 2; // Giảm thời gian chờ từ 62 giây xuống 10 giây
+            let countdown = 75; // Chờ
             const countdownInterval = setInterval(() => {
-                input.value = `Vui lòng chờ: ${countdown} giây`;
+                input.value = `Chờ: ${countdown} giây - Nhanh Hơn Gây Lỗi  `;
                 countdown--;
                 if (countdown < 0) {
                     clearInterval(countdownInterval);
                     
                   
                   
-                  
-                  
-                  
-
-                  
-                  
-                  
-                  
-      
-                  
-                  
-                  
-                  
-                  
-                  
-     if (fetchCheckbox.checked) {
-    // Tìm ô "Nhập mã ở đây" và nút "Xác nhận" trên trang chính
+         if (fetchCheckbox.checked) {
+    // Tìm "Nhập mã ở đây" và nút "Xác nhận"
     const codeInputField = document.querySelector('input[placeholder="Nhập mã vào đây"]');
     const confirmButton = Array.from(document.querySelectorAll('button')).find(button => button.textContent.trim() === 'Xác nhận');
 
     if (codeInputField && confirmButton) {
-        // Đóng popup nếu có
         const closeButton = Array.from(document.querySelectorAll('button')).find(button => button.textContent.trim() === 'Đóng');
         if (closeButton) closeButton.click();
 
-        // Điền mã vào ô "Nhập mã ở đây" (chỉ để hiển thị)
+        // Điền mã vào "Nhập mã ở đây"
         codeInputField.value = code;
-        input.value = `Code: ${code} - Đã gửi mã, đang chuyển trang...`;
-
-        // Gửi mã đến server Yeumoney mà không nhấn "Xác nhận"
-        fetchResult(code);
-
-        // Giả lập thời gian chờ (nếu Yeumoney kiểm tra phía client)
-        const fakeTimestamp = Date.now() - 90 * 1000; // Giả lập đã chờ 90 giây
-        localStorage.setItem('yeumoney_timer', fakeTimestamp); // Thay đổi tên biến nếu cần
-        sessionStorage.setItem('yeumoney_timer', fakeTimestamp); // Thay đổi tên biến nếu cần
-
-        // Kiểm tra taskURL trước khi chuyển hướng
-        if (taskURL && !taskURL.includes("Lỗi")) {
-            // Chuyển hướng đến URL gốc sau 5 giây
-            setTimeout(() => {
-                window.location.href = taskURL; // Chuyển hướng đến URL gốc
-            }, 5000); // 5000ms = 5 giây
-        } else {
-            input.value = `Code: ${code} - Lỗi: URL không hợp lệ, vui lòng nhập thủ công`;
-            alert("URL không hợp lệ. Vui lòng nhập URL thủ công vào ô URL và thử lại.");
-        }
+        input.value = `Code: ${code} - Đã điền mã, đang chuyển trang...`;
+        // Bấm nút "Xác nhận"
+        confirmButton.click();
     } else {
         input.value = `Code: ${code} - Lỗi: Không tìm thấy ô nhập mã hoặc nút Xác nhận`;
-        alert("Không tìm thấy ô nhập mã hoặc nút Xác nhận. Vui lòng dán mã: " + code + " vào ô 'Nhập mã ở đây' và bấm 'Xác nhận' thủ công.");
+        alert("Lỗi Chuyển Trang. Tự cop code: " + code + " vào ô 'Nhập mã ở đây' và bấm 'Xác nhận' thủ công.");
     }
 } else {
     input.value = "Code: " + code;
-}
+} 
+         
+                  
+             
+                  
+                  
+                  
+                  
+
+                  
+                  
+      
+
+      
+                  
+                  
+    
                   
                   
                   
@@ -603,21 +569,7 @@ startBtn.addEventListener('touchend', () => {
         console.error("Lỗi khi gọi startBypass:", error);
     }
 };                   
-   
-
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
-      
+  
       
         buttonRow.appendChild(startBtn);
 
@@ -628,24 +580,24 @@ reloadBtn.style.padding = '10px';
 reloadBtn.style.borderRadius = '10px';
 reloadBtn.style.border = 'none';
 reloadBtn.style.cursor = 'pointer';
-reloadBtn.style.backgroundColor = '#4B0082'; // Màu tím đậm
-reloadBtn.style.color = '#FFD700';          // Màu vàng óng
+reloadBtn.style.backgroundColor = '#4B0082'; //tím đậm
+reloadBtn.style.color = '#FFD700';          //vàng óng
 reloadBtn.style.fontWeight = 'bold';
-reloadBtn.style.boxShadow = '0 4px 8px rgba(0, 0, 0, 0.5)'; // Hiệu ứng bóng 3D
+reloadBtn.style.boxShadow = '0 4px 8px rgba(0, 0, 0, 0.5)'; //3D
 reloadBtn.style.textShadow = '0 0 5px rgba(255, 255, 0, 0.8), 0 0 10px rgba(255, 255, 0, 0.6)';
-reloadBtn.style.transition = 'all 0.2s ease-in-out'; // Hiệu ứng mượt mà cho các thay đổi
-reloadBtn.style.border = '1px solid #FFD700'; // Viền màu vàng óng, độ dày 2px
+reloadBtn.style.transition = 'all 0.2s ease-in-out'; // lam muot
+reloadBtn.style.border = '1px solid #FFD700'; // Viền vàng óng
 reloadBtn.style.boxSizing = 'border-box'
-// Hiệu ứng khi nhấn (nút di chuyển xuống tạo cảm giác ấn)
+// Hiệu ứng nhấn nut
 reloadBtn.addEventListener('touchstart', () => {
-    reloadBtn.style.transform = 'translateY(4px)'; // Dịch chuyển nút xuống 4px khi nhấn
-    reloadBtn.style.boxShadow = '0 2px 4px rgba(0, 0, 0, 0.7)'; // Bóng dày hơn khi nhấn
+    reloadBtn.style.transform = 'translateY(4px)'; 
+    reloadBtn.style.boxShadow = '0 2px 4px rgba(0, 0, 0, 0.7)';
 });
 
-// Hiệu ứng khi thả tay (trở lại vị trí ban đầu)
+// Hiệu ứng thả tay 
 reloadBtn.addEventListener('touchend', () => {
-    reloadBtn.style.transform = 'translateY(0)'; // Trả lại vị trí ban đầu
-    reloadBtn.style.boxShadow = '0 4px 8px rgba(0, 0, 0, 0.5)'; // Trả lại bóng nổi
+    reloadBtn.style.transform = 'translateY(0)'; 
+    reloadBtn.style.boxShadow = '0 4px 8px rgba(0, 0, 0, 0.5)';
 });
         reloadBtn.onclick = async () => {
             input.readOnly = true;
@@ -661,31 +613,29 @@ reloadBtn.addEventListener('touchend', () => {
         if (autoStartCheckbox.checked) {
             startBtn.click();
         }
-        // Sau khi bạn đã thêm các nút vào container (nút Bypass và nút Đổi Nhiệm Vụ)
-
-// Tạo phần tử "Báo Lỗi"
+        
       
       
       
       
     const errorLink = document.createElement('a');
-errorLink.textContent = '? Báo Lỗi ?'; // Dòng chữ "Báo Lỗi"
-errorLink.style.fontSize = '16px'; // Kích thước chữ
+errorLink.textContent = '? Báo Lỗi ?'; 
+errorLink.style.fontSize = '10px'; 
 errorLink.style.fontWeight = 'bold';
-errorLink.style.marginTop = '10px'; // Khoảng cách với các nút trên
+errorLink.style.marginTop = '20px';
 errorLink.style.fontStyle = 'normal';        
 errorLink.style.textAlign = 'center';
 errorLink.style.backgroundSize = '200% auto';
-errorLink.style.color = '#FF0000'; // Màu chữ đỏ
+errorLink.style.color = '#FFFF66'; 
      errorLink.style.textShow = '0 0 8px #FFD700, 0 0 20px #FFD700, 0 0 30px #FFD700';
         errorLink.style.backgroundClip = 'text';
        errorLink.style.webkitBackgroundClip = 'text';
         errorLink.style.textDecoration = 'underline'; 
-        errorLink.href = 'https://facebook.com/lapho111'; // Đường link dẫn tới Facebook
+        errorLink.href = 'https://facebook.com/lapho111';
         errorLink.target = '_blank';
       errorLink.style.fontFamily = 'Sans-serif';
    
-container.appendChild(errorLink);  // Thêm phần tử vào container
+container.appendChild(errorLink); 
   
       
       

@@ -315,21 +315,36 @@
 
 
     
-    function createUI(taskURL) {
-const container = document.createElement('div');
-container.style.position = 'fixed';
-      container.style.height = 'auto';
-container.style.bottom = '0px';
-container.style.left = '50%';
-      container.style.transform = 'translateX(-50%)';
-container.style.backgroundColor = '#000000'; 
-container.style.border = '1px solid #444';
-container.style.padding = '10px';
-container.style.zIndex = '9999';
-container.style.width = ' 350px';
-      container.style.boxShadow = '0px 4px 6px rgba (0,0,0,0.1)';
-      container.style.borderRadius = '15px';
-document.body.appendChild(container); 
+function createUI(taskURL) {
+    const container = document.createElement('div');
+    container.style.position = 'fixed';
+    container.style.height = '200px'; // Chiều cao cố định ban đầu
+    container.style.bottom = '20px'; // Trạng thái thu nhỏ ban đầu
+    container.style.left = '20px';   // Trạng thái thu nhỏ ban đầu
+    container.style.backgroundColor = '#000000';
+    container.style.border = '1px solid #444';
+    container.style.padding = '0';   // Trạng thái thu nhỏ ban đầu
+    container.style.zIndex = '9999';
+    container.style.width = '93%'; // Chiều rộng gốc
+    container.style.boxShadow = '0 4px 8px rgba(0, 0, 0, 0.5)'; // Trạng thái thu nhỏ ban đầu
+    container.style.borderRadius = '50%'; // Trạng thái thu nhỏ ban đầu
+    container.style.transform = 'scale(0.142)'; // Trạng thái thu nhỏ ban đầu
+    container.style.transformOrigin = '0 100%'; // Gốc biến đổi ở góc trái dưới
+    container.style.transition = 'transform 0.4s ease-in-out, border-radius 0.4s ease-in-out, bottom 0.4s ease-in-out, left 0.4s ease-in-out, box-shadow 0.4s ease-in-out, padding 0.4s ease-in-out';
+    document.body.appendChild(container);
+
+    // Tự động phóng to từ trạng thái thu nhỏ sau khi thêm vào DOM
+    setTimeout(() => {
+        container.style.transform = 'translateX(-50%)';
+        container.style.borderRadius = '15px';
+        container.style.bottom = '0px';
+        container.style.left = '50%';
+        container.style.boxShadow = '0px 4px 6px rgba(0,0,0,0.1)';
+        container.style.padding = '10px';
+        container.style.height = 'auto'; // Chuyển về auto sau khi phóng to
+    }, 10); // Delay nhẹ để đảm bảo hiệu ứng chạy sau khi thêm vào DOM
+
+    // ... (phần còn lại của createUI như closeBtn, title, input, v.v. giữ nguyên)
 
       
       
@@ -376,6 +391,112 @@ closeBtn.onclick = (event) => {
 
 container.appendChild(closeBtn);
       
+      
+      
+      
+      
+      
+      
+      
+      
+      
+      let isMinimized = false;
+
+closeBtn.onclick = (event) => {
+    event.preventDefault();
+    event.stopPropagation();
+
+    if (!isMinimized) {
+      // Thu nhỏ container thành hình tròn đen
+container.style.transition = 'transform 0.4s ease-in-out, border-radius 0.4s ease-in-out, bottom 0.4s ease-in-out, left 0.4s ease-in-out, box-shadow 0.4s ease-in-out, padding 0.4s ease-in-out';
+container.style.transform = 'scale(0.142)'; // Thu nhỏ xuống ~50px (350px * 0.142)
+container.style.transformOrigin = '0 100%'; // Gốc biến đổi ở góc trái dưới (0% ngang, 100% dọc)
+container.style.borderRadius = '50%';
+container.style.backgroundImage = 'url(https://raw.githubusercontent.com/lapho111/Bypass/refs/heads/main/Logo.jpeg)';
+container.style.backgroundSize = 'cover';
+container.style.backgroundPosition = 'center';
+container.style.bottom = '20px';
+container.style.left = '20px';
+container.style.boxShadow = '0 4px 8px rgba(0, 0, 0, 0.5)';
+container.style.padding = '0';
+container.style.width = '85%'; // Giữ chiều rộng gốc
+container.style.height = '50%'; // Đặt chiều cao cố định để đảm bảo hiển thị
+
+      
+      
+        // Ẩn nội dung với hiệu ứng mờ dần
+        container.querySelectorAll('*').forEach(child => {
+            if (child !== closeBtn) {
+                child.dataset.originalDisplay = child.style.display || window.getComputedStyle(child).display;
+                child.style.transition = 'opacity 0.2s ease-in-out';
+                child.style.opacity = '0';
+                setTimeout(() => {
+                    child.style.display = 'none';
+                }, 200);
+            }
+        });
+
+        // Điều chỉnh nút "X" khi thu nhỏ
+        closeBtn.style.width = '100%';
+        closeBtn.style.height = '100%';
+        closeBtn.style.top = '0';
+        closeBtn.style.right = '0';
+        closeBtn.style.zIndex = '10000';
+        closeBtn.style.pointerEvents = 'auto';
+
+        isMinimized = true;
+    } else {
+        // Mở lại container về trạng thái ban đầu
+        container.style.transition = 'transform 0.4s ease-in-out, border-radius 0.4s ease-in-out, bottom 0.4s ease-in-out, left 0.4s ease-in-out, box-shadow 0.4s ease-in-out, padding 0.4s ease-in-out';
+        container.style.transform = 'translateX(-50%)'; // Trở lại kích thước ban đầu và căn giữa
+        container.style.borderRadius = '15px'; // Giá trị ban đầu của hình chữ nhật
+        container.style.backgroundColor = '#000000';
+        container.style.bottom = '0px';
+        container.style.left = '50%';
+        container.style.boxShadow = '0px 4px 6px rgba(0,0,0,0.1)';
+        container.style.padding = '10px';
+        container.style.width = '350px'; // Giữ chiều rộng gốc
+        container.style.height = 'auto'; // Giữ chiều cao gốc
+container.style.backgroundColor = '#000000'; // Thêm dòng này
+      container.style.backgroundImage = 'none'; // Xóa logo
+        // Hiển thị lại nội dung với hiệu ứng mờ dần
+        container.querySelectorAll('*').forEach(child => {
+            if (child !== closeBtn) {
+                child.style.display = child.dataset.originalDisplay || 'block';
+                child.style.transition = 'opacity 0.2s ease-in-out';
+                child.style.opacity = '0';
+                setTimeout(() => {
+                    child.style.opacity = '1';
+                }, 10);
+            }
+        });
+
+        // Khôi phục nút "X" về trạng thái ban đầu
+        closeBtn.style.width = '25px';
+        closeBtn.style.height = '25px';
+        closeBtn.style.top = '5px';
+        closeBtn.style.right = '5px';
+        closeBtn.style.display = 'flex';
+        closeBtn.style.alignItems = 'center';
+        closeBtn.style.justifyContent = 'center';
+        closeBtn.style.zIndex = '10000';
+        closeBtn.style.pointerEvents = 'auto';
+        closeBtn.style.backgroundColor = 'transparent';
+        closeBtn.style.border = 'none';
+        closeBtn.style.borderRadius = '50%';
+        closeBtn.style.cursor = 'pointer';
+        closeBtn.style.boxShadow = '0 2px 4px rgba(0, 0, 0, 0.3)';
+
+        const closeIcon = closeBtn.querySelector('img');
+        if (closeIcon) {
+            closeIcon.style.width = '15px';
+            closeIcon.style.height = '15px';
+            closeIcon.style.display = 'block';
+        }
+
+        isMinimized = false;
+    }
+};
       
       
       

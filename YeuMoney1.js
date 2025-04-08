@@ -666,9 +666,9 @@ startBtn.addEventListener('touchend', () => {
         const code = await startBypass(check);
 
         if (code) {
-            let countdown = 75; // Chờ
+            let countdown = 80; // Chờ
             const countdownInterval = setInterval(() => {
-                input.value = `Chờ: ${countdown} giây - Nhanh Hơn Gây Lỗi  `;
+                input.value = `Chờ: ${countdown}s Để Tránh Bị Reload  `;
                 countdown--;
                 if (countdown < 0) {
                     clearInterval(countdownInterval);

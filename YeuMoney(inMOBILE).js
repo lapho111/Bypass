@@ -632,7 +632,7 @@
                 }
             } else {
                 input.value = 'Lỗi: Không tìm thấy ô nhập mã hoặc nút Xác nhận';
-                alert("Lỗi Chuyển Trang. Tự cop code vào ô 'Nhập mã ở đây' và bấm 'Xác nhận' thủ công.");
+                alert("Lỗi.............");
             }
         };
         buttonRow.appendChild(transferBtn);

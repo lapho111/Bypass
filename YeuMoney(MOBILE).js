@@ -343,27 +343,27 @@
             event.preventDefault();
             event.stopPropagation();
             if (!isMinimized) {
-                container.style.transition = 'transform 0.4s ease-in-out, border-radius 0.4s ease-in-out, bottom 0.4s ease-in-out, left 0.4s ease-in-out, box-shadow 0.4s ease-in-out, padding 0.4s ease-in-out';
+                container.style.transition = 'transform 0.4s ease-in-out,border-radius, opacity 0.4s ease-in-out,bottom 0.4s  , left 0.4s ease-in-out';
                 container.style.transform = 'scale(0.142)';
                 container.style.transformOrigin = '0 100%';
-                container.style.borderRadius = '100%';
+                container.style.borderRadius = '80%';
                 container.style.backgroundImage = 'url(https://raw.githubusercontent.com/lapho111/Bypass/refs/heads/main/Logo.jpeg)';
                 container.style.backgroundSize = 'cover';
                 container.style.backgroundPosition = 'center';
                 container.style.bottom = '20px';
                 container.style.left = '20px';
-                container.style.boxShadow = '0 4px 8px rgba(0, 0, 0, 0.5)';
+                container.style.boxShadow = '0 4px 8px rgba(0, 0, 0, 5)';
                 container.style.padding = '0';
-                container.style.width = '500px';
-                container.style.height = '500px';
+                container.style.width = '420px';
+                container.style.height = '420px';
                 container.querySelectorAll('*').forEach(child => {
                     if (child !== closeBtn) {
                         child.dataset.originalDisplay = child.style.display || window.getComputedStyle(child).display;
-                        child.style.transition = 'opacity 0.2s ease-in-out';
+                        child.style.transition = 'opacity 0s ease-in-out';
                         child.style.opacity = '0';
                         setTimeout(() => {
                             child.style.display = 'none';
-                        }, 200);
+                        }, 0.1);
                     }
                 });
                 closeBtn.style.width = '100%';

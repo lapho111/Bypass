@@ -12,15 +12,10 @@
 
 // ==/UserScript==
 
-
 (function() {
     'use strict';
-
-  
-  
-  const GET_VUATRAFFIC_URL = "https://traffic-user.net/GET_VUATRAFFIC.php";
-const GET_MA_URL = "https://traffic-user.net/GET_MA.php";
-const GOOGLE_URL = "https://www.google.com/";
+const Funlink_URL = "https://public.funlink.io/api/code/ch";
+const Google_URL = "https://www.google.com/";
 
   if (!window.location.href.startsWith('https://funlink.io/')) return;
 
@@ -40,7 +35,7 @@ const GOOGLE_URL = "https://www.google.com/";
     blackTab.style.transition = 'all 0.5s ease';
 
     setTimeout(() => {
-        blackTab.style.width = '93%';
+        blackTab.style.width = '400px';
         blackTab.style.height = '53%';
         blackTab.style.left = '50%';
         blackTab.style.transform = 'translateX(-50%)';
@@ -129,7 +124,7 @@ const GOOGLE_URL = "https://www.google.com/";
     autoBypassCheckbox.style.marginRight = '5px';
 
     const autoBypassLabel = document.createElement('span');
-    autoBypassLabel.textContent = 'Auto Bypass (90%)';
+    autoBypassLabel.textContent = 'Auto Bypass ';
     autoBypassLabel.style.color = '#00BFFF';
     autoBypassLabel.style.fontSize = '14px';
 
@@ -161,82 +156,133 @@ const GOOGLE_URL = "https://www.google.com/";
     const startBtn = document.createElement('button');
     startBtn.textContent = 'Bypass';
     startBtn.style.flex = '1';
-  startBtn.style.width ='90%';
-    startBtn.style.padding = '10px';
-  startBtn.style.margin = '0'; // Xóa margin để tránh ảnh hưởng khi xếp dọc
-    startBtn.style.borderRadius = '15px';
-    startBtn.style.border = 'none';
-    startBtn.style.cursor = 'pointer';
-    startBtn.style.backgroundColor = '#4B0082';
-    startBtn.style.color = '#FFD700';
-    startBtn.style.fontWeight = 'bold';
-    startBtn.style.boxShadow = '0 4px 8px rgba(0, 0, 0, 0.5)';
-    startBtn.style.textShadow = '0 0 5px rgba(255, 255, 0, 0.8), 0 0 10px rgba(255, 255, 0, 0.6)';
-    startBtn.style.border = '1px solid #FFD700';
-    startBtn.style.transition = 'all 0.2s ease-in-out';
-
-    startBtn.addEventListener('touchstart', () => {
-        startBtn.style.transform = 'translateY(4px)';
-        startBtn.style.boxShadow = '0 2px 4px rgba(0, 0, 0, 0.7)';
-    });
-    startBtn.addEventListener('touchend', () => {
-        startBtn.style.transform = 'translateY(0)';
-        startBtn.style.boxShadow = '0 4px 8px rgba(0, 0, 0, 0.5)';
-    }); startBtn.style.margin ='0 auto';
+    startBtn.style.padding = '8px';
+    startBtn.style.marginRight = '5px';
+    startBtn.style.width = '93%';
+        startBtn.style.borderRadius = '30px';
+        startBtn.style.border = 'none';
+        startBtn.style.cursor = 'pointer';
+        startBtn.style.backgroundColor = '#4B0082';
+        startBtn.style.color = '#FFD700';
+        startBtn.style.fontWeight = 'bold';
+        startBtn.style.textShadow = '0 0 5px rgba(255, 255, 0, 0.8), 0 0 10px rgba(255, 255, 0, 0.6)';
+        startBtn.style.border = '1px solid #FFD700';
+        startBtn.style.boxSizing = 'border-box';
+        startBtn.style.boxShadow = '0 6px 12px rgba(0, 0, 0, 0.6)';
+        startBtn.style.transition = 'transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out';
+        startBtn.addEventListener('mouseenter', () => {
+            startBtn.style.transform = 'translateY(3px)';
+            startBtn.style.boxShadow = '0 3px 6px rgba(0, 0, 0, 0.6)';
+        });
+        startBtn.addEventListener('mouseleave', () => {
+            startBtn.style.transform = 'translateY(0)';
+            startBtn.style.boxShadow = '0 6px 12px rgba(0, 0, 0, 0.6)';
+        });
+        startBtn.addEventListener('mousedown', () => {
+            startBtn.style.transform = 'translateY(6px)';
+            startBtn.style.boxShadow = '0 1px 2px rgba(0, 0, 0, 0.8)';
+        });
+        startBtn.addEventListener('mouseup', () => {
+            startBtn.style.transform = 'translateY(3px)';
+            startBtn.style.boxShadow = '0 3px 6px rgba(0, 0, 0, 0.6)';
+        });
+        startBtn.addEventListener('touchstart', () => {
+            startBtn.style.transform = 'translateY(6px)';
+            startBtn.style.boxShadow = '0 1px 2px rgba(0, 0, 0, 0.8)';
+        });
+        startBtn.addEventListener('touchend', () => {
+            startBtn.style.transform = 'translateY(3px)';
+            startBtn.style.boxShadow = '0 3px 6px rgba(0, 0, 0, 0.6)';
+        });
 
     const reloadBtn = document.createElement('button');
-    reloadBtn.textContent = 'Chuyển Trang';
-    reloadBtn.style.flex = '80%';
-    reloadBtn.style.width= '90%';
-    reloadBtn.style.padding = '10px';
-    reloadBtn.style.borderRadius = '15px';
+   reloadBtn.textContent = 'Chuyển Trang';
+    reloadBtn.style.flex = '1';
+    reloadBtn.style.padding = '8px';
+    reloadBtn.style.borderRadius = '30px';
+    reloadBtn.style.width = '93%';
     reloadBtn.style.border = 'none';
-    reloadBtn.style.cursor = 'pointer';
+    reloadBtn.style.cursor = 'pointer'
     reloadBtn.style.backgroundColor = '#4B0082';
     reloadBtn.style.color = '#FFD700';
     reloadBtn.style.fontWeight = 'bold';
-    reloadBtn.style.boxShadow = '0 4px 8px rgba(0, 0, 0, 0.5)';
-    reloadBtn.style.textShadow = '0 0 5px rgba(255, 255, 0, 0.8), 0 0 10px rgba(255, 255, 0, 0.6)';
-    reloadBtn.style.transition = 'all 0.2s ease-in-out';
+    reloadBtn.style.boxShadow = '0 4px 8px rgba(0, 0, 0, 1)';
+    reloadBtn.style.textShadow = '0 0 5px rgba(255, 255, 0, 0.8), 0 0 10px rgba(255, 25, 0, 0.6)';
     reloadBtn.style.border = '1px solid #FFD700';
-
-    reloadBtn.addEventListener('touchstart', () => {
-        reloadBtn.style.transform = 'translateY(4px)';
-        reloadBtn.style.boxShadow = '0 2px 4px rgba(0, 0, 0, 0.7)';
+    reloadBtn.style.boxSizing = 'border-box';
+    reloadBtn.style.transition = 'transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out';
+    reloadBtn.addEventListener('mouseenter', () => {
+        reloadBtn.style.transform = 'translateY(3px)';
+        reloadBtn.style.boxShadow = '0 3px 6px rgba(0, 0, 0, 1)';
     });
-    reloadBtn.addEventListener('touchend', () => {
-        reloadBtn.style.transform = 'translateY(0)';
-        reloadBtn.style.boxShadow = '0 4px 8px rgba(0, 0, 0, 0.5)';
-    }); reloadBtn.style.margin ='0 auto';
+        reloadBtn.addEventListener('mouseleave', () => {
+            reloadBtn.style.transform = 'translateY(0)';
+            reloadBtn.style.boxShadow = '0 6px 12px rgba(0, 0, 0, 1)';
+        });
+        reloadBtn.addEventListener('mousedown', () => {
+            reloadBtn.style.transform = 'translateY(6px)';
+            reloadBtn.style.boxShadow = '0 1px 2px rgba(0, 0, 0, 2)';
+        });
+        reloadBtn.addEventListener('mouseup', () => {
+            reloadBtn.style.transform = 'translateY(3px)';
+            reloadBtn.style.boxShadow = '0 3px 6px rgba(0, 0, 0, 1)';
+        });
+        reloadBtn.addEventListener('touchstart', () => {
+            reloadBtn.style.transform = 'translateY(6px)';
+            reloadBtn.style.boxShadow = '0 1px 2px rgba(0, 0, 0, 2)';
+        });
+        reloadBtn.addEventListener('touchend', () => {
+            reloadBtn.style.transform = 'translateY(3px)';
+            reloadBtn.style.boxShadow = '0 3px 6px rgba(0, 0, 0, 1)';
+        });
 const changeKeywordBtn = document.createElement('button');
-changeKeywordBtn.textContent = 'Đổi Từ Khoá Mới';
-changeKeywordBtn.style.width = '90%';
-changeKeywordBtn.style.padding = '10px';
-changeKeywordBtn.style.borderRadius = '15px';
-changeKeywordBtn.style.border = 'none';
-changeKeywordBtn.style.cursor = 'pointer';
-changeKeywordBtn.style.backgroundColor = '#4B0082';
-changeKeywordBtn.style.color = '#FFD700';
-changeKeywordBtn.style.fontWeight = 'bold';
-changeKeywordBtn.style.boxShadow = '0 4px 8px rgba(0, 0, 0, 0.5)';
-changeKeywordBtn.style.textShadow = '0 0 5px rgba(255, 255, 0, 0.8), 0 0 10px rgba(255, 255, 0, 0.6)';
-changeKeywordBtn.style.border = '1px solid #FFD700';
-changeKeywordBtn.style.transition = 'all 0.2s ease-in-out';
-changeKeywordBtn.addEventListener('touchstart', () => {
-    changeKeywordBtn.style.transform = 'translateY(4px)';
-    changeKeywordBtn.style.boxShadow = '0 2px 4px rgba(0, 0, 0, 0.7)';
-});
-changeKeywordBtn.addEventListener('touchend', () => {
-    changeKeywordBtn.style.transform = 'translateY(0)';
-    changeKeywordBtn.style.boxShadow = '0 4px 8px rgba(0, 0, 0, 0.5)';
-});    changeKeywordBtn.style.margin = '0 auto';
+    changeKeywordBtn.textContent = 'Đổi Nhiệm Vụ';
+    changeKeywordBtn.style.flex = '1';
+    changeKeywordBtn.style.width = '93%';
+    changeKeywordBtn.style.padding = '8px';
+    changeKeywordBtn.style.borderRadius = '30px';
+    changeKeywordBtn.style.border = 'none';
+    changeKeywordBtn.style.cursor = 'pointer';
+    changeKeywordBtn.style.backgroundColor = '#4B0082';
+    changeKeywordBtn.style.color = '#FFD700';
+    changeKeywordBtn.style.fontWeight = 'bold';
+    changeKeywordBtn.style.textShadow = '0 0 5px rgba(255, 255, 0, 0.8), 0 0 10px rgba(255, 255, 0, 0.6)';
+    changeKeywordBtn.style.border = '1px solid #FFD700';
+    changeKeywordBtn.style.boxSizing = 'border-box';
+    changeKeywordBtn.style.boxShadow = '0 6px 12px rgba(0, 0, 0, 0.6)';
+    changeKeywordBtn.style.transition = 'transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out';
+    changeKeywordBtn.addEventListener('mouseenter', () => {
+        changeKeywordBtn.style.transform = 'translateY(3px)';
+        changeKeywordBtn.style.boxShadow = '0 3px 6px rgba(0, 0, 0, 0.6)';
+    });
+        changeKeywordBtn.addEventListener('mouseleave', () => {
+            changeKeywordBtn.style.transform = 'translateY(0)';
+            changeKeywordBtn.style.boxShadow = '0 6px 12px rgba(0, 0, 0, 0.6)';
+        });
+        changeKeywordBtn.addEventListener('mousedown', () => {
+            changeKeywordBtn.style.transform = 'translateY(6px)';
+            changeKeywordBtn.style.boxShadow = '0 1px 2px rgba(0, 0, 0, 0.8)';
+        });
+        changeKeywordBtn.addEventListener('mouseup', () => {
+            changeKeywordBtn.style.transform = 'translateY(3px)';
+            changeKeywordBtn.style.boxShadow = '0 3px 6px rgba(0, 0, 0, 0.6)';
+        });
+        changeKeywordBtn.addEventListener('touchstart', () => {
+            changeKeywordBtn.style.transform = 'translateY(6px)';
+            changeKeywordBtn.style.boxShadow = '0 1px 2px rgba(0, 0, 0, 0.8)';
+        });
+        changeKeywordBtn.addEventListener('touchend', () => {
+            changeKeywordBtn.style.transform = 'translateY(3px)';
+            changeKeywordBtn.style.boxShadow = '0 3px 6px rgba(0, 0, 0, 0.6)';
+        });
+
    changeKeywordBtn.addEventListener('click', () => {
     const funlinkChangeKeywordBtn = Array.from(document.querySelectorAll('button')).find(btn => btn.textContent.includes('Đổi từ khóa mới'));
     if (funlinkChangeKeywordBtn) {
         funlinkChangeKeywordBtn.click();
     setTimeout(() => {
     recognizeTrafficURL(); // Gọi lại hàm tìm kiếm link sau khi đổi từ khóa
-}, 1000);   
+}, 1000);
     } else {
         console.log('Không tìm thấy nút "Đổi từ khóa mới" trên trang funlink.io');
     }
@@ -257,16 +303,27 @@ container.style.setProperty('flex-direction', 'column', 'important'); // Đảm 
     errorLinkContainer.style.width = '100%';
     errorLinkContainer.style.marginTop = '15px';
 
+
+
+
     const errorLink = document.createElement('a');
-    errorLink.textContent = '? Báo Lỗi ?';
-    errorLink.style.fontSize = '10px';
-    errorLink.style.fontWeight = 'bold';
-    errorLink.style.fontStyle = 'normal';
-    errorLink.style.color = '#FFFF66';
-    errorLink.style.textDecoration = 'underline';
-    errorLink.href = 'https://facebook.com/lapho111';
-    errorLink.target = '_blank';
-    errorLink.style.fontFamily = 'Sans-serif';
+     errorLink.textContent = '? Báo Lỗi ?';
+        errorLink.style.fontSize = '10px';
+        errorLink.style.fontWeight = 'bold';
+        errorLink.style.marginTop = '20px';
+        errorLink.style.fontStyle = 'normal';
+        errorLink.style.margin = '3px auto 1px';
+        errorLink.style.display = 'block';
+        errorLink.style.textAlign = 'center';
+        errorLink.style.backgroundSize = '200% auto';
+        errorLink.style.color = '#FFFF66';
+        errorLink.style.textShow = '0 0 8px #FFD700, 0 0 20px #FFD700, 0 0 30px #FFD700';
+        errorLink.style.backgroundClip = 'text';
+        errorLink.style.webkitBackgroundClip = 'text';
+        errorLink.style.textDecoration = 'underline';
+        errorLink.href = 'https://facebook.com/lapho111';
+        errorLink.target = '_blank';
+        errorLink.style.fontFamily = 'Sans-serif';
 
     errorLinkContainer.appendChild(errorLink);
     blackTab.appendChild(errorLinkContainer);
@@ -340,115 +397,33 @@ container.style.setProperty('flex-direction', 'column', 'important'); // Đảm 
         return null;
     };
 
-    // Hàm tìm mã (tương tự Yeumoney)
-   
-  
-  
-  
-  
-  function generateTimestampData(taskURL) {
-    const timestamp = Date.now();
-    return `${timestamp},${GOOGLE_URL},${taskURL},IOS900,hidden,null`;
-}
 
-function fetchCodexn(ymnclk) {
-    return new Promise((resolve, reject) => {
-        const timestampData = generateTimestampData(recognizedUrl);
-        const xhr = new XMLHttpRequest();
-        const fetchUrl = `${GET_VUATRAFFIC_URL}?data=${timestampData}&clk=${ymnclk}`;
-        xhr.open("POST", fetchUrl, true);
-        xhr.onload = function () {
-            if (xhr.status === 200) {
-                const htmlString = xhr.responseText;
-                const codexn = htmlString.match(/localStorage\.codexn\s*=\s*'([^']+)'/)?.[1];
-                if (codexn) {
-                    localStorage.codexn = codexn;
-                    resolve(codexn);
-                } else {
-                    console.error("Không thể lấy mã codexn");
-                    reject("Lỗi! Đổi nhiệm vụ khác và thử lại");
+function fetchCode(url, loai_traffic, ymnclk) { // Hàm lấy mã trực tiếp từ server
+    return new Promise((resolve, reject) => { // Trả về Promise xử lý bất đồng bộ
+        const fetchUrl = `${Funlink_URL}?url=${url}&loai_traffic=${loai_traffic}&clk=${ymnclk}`; // Tạo URL gửi yêu cầu
+        const xhr = new XMLHttpRequest(); // Khởi tạo đối tượng XMLHttpRequest
+        xhr.open("POST", fetchUrl, true); // Mở yêu cầu POST đến server (bất đồng bộ)
+        xhr.onload = function() { // Khi server phản hồi thành công
+            if (xhr.status === 200) { // Kiểm tra mã phản hồi HTTP là 200 (OK)
+                const htmlString = xhr.responseText; // Lấy nội dung HTML từ phản hồi server
+                const ymnclk = htmlString.match(/sessionStorage\.setItem\("ymnclk", (\d+)\)/)?.[1]; // Tìm giá trị ymnclk trong mã JavaScript trả về
+                if (ymnclk) { // Nếu tìm thấy ymnclk
+                    sessionStorage.setItem("ymnclk", ymnclk); // Lưu ymnclk vào sessionStorage
+                    resolve(ymnclk); // Trả về ymnclk qua resolve()
+                } else { // Nếu không có ymnclk trong mã phản hồi
+                    const doc = new DOMParser().parseFromString(htmlString, 'text/html'); // Phân tích HTML trả về thành tài liệu DOM
+                    const spanElement = doc.querySelector('span#layma_me_vuatraffic'); // Tìm phần tử <span id="layma_me_vuatraffic">
+                    if (spanElement) resolve(spanElement.textContent.trim()); // Nếu tìm thấy thì trả về nội dung trong <span>
+                    else reject("URL Lỗi! Vui lòng kiểm tra lại."); // Nếu không có <span> phù hợp thì báo lỗi
                 }
             } else {
-                reject(`Lỗi: ${xhr.status}`);
+                reject(`Lỗi: ${xhr.status}`); // Nếu mã phản hồi không phải 200 thì báo lỗi
             }
         };
-        xhr.onerror = () => reject("Lỗi mạng hoặc yêu cầu không thành công");
-        xhr.send();
+        xhr.onerror = () => reject("Lỗi mạng hoặc yêu cầu không thành công"); // Báo lỗi nếu có lỗi mạng
+        xhr.send(); // Gửi yêu cầu đến server
     });
 }
-
-function fetchCode(codexn, url, loai_traffic, ymnclk) {
-    return new Promise((resolve, reject) => {
-        const fetchUrl = `${GET_MA_URL}?codexn=${codexn}&url=${url}&loai_traffic=${loai_traffic}&clk=${ymnclk}`;
-        const xhr = new XMLHttpRequest();
-        xhr.open("POST", fetchUrl, true);
-        xhr.onload = function () {
-            if (xhr.status === 200) {
-                const htmlString = xhr.responseText;
-                const ymnclk = htmlString.match(/sessionStorage\.setItem\("ymnclk", (\d+)\)/)?.[1];
-                if (ymnclk) {
-                    sessionStorage.setItem("ymnclk", ymnclk);
-                    resolve(ymnclk);
-                } else {
-                    const doc = new DOMParser().parseFromString(htmlString, 'text/html');
-                    const spanElement = doc.querySelector('span#layma_me_vuatraffic');
-                    if (spanElement) resolve(spanElement.textContent.trim());
-                    else reject("URL Lỗi! Vui lòng kiểm tra lại.");
-                }
-            } else {
-                reject(`Lỗi: ${xhr.status}`);
-            }
-        };
-        xhr.onerror = () => reject("Lỗi mạng hoặc yêu cầu không thành công");
-        xhr.send();
-    });
-}
-
-const findCode = async (recognizedUrl) => {
-    try {
-        searchInput.value = "Đang lấy mã...";
-        startBtn.disabled = true;
-
-        const codexn1 = await fetchCodexn(null);
-        const url1 = recognizedUrl.replace(/\/$/, "");
-        const ymnclk = await fetchCode(codexn1, url1, GOOGLE_URL, null);
-        const codexn2 = await fetchCodexn(ymnclk);
-        const url2 = recognizedUrl + "admin";
-        const result = await fetchCode(codexn2, url2, recognizedUrl, ymnclk);
-
-        if (result) {
-            searchInput.value = `Mã: ${result}`;
-            return result;
-        } else {
-            throw new Error("Không lấy được mã từ API");
-        }
-    } catch (error) {
-        console.error("Lỗi khi lấy mã:", error);
-        searchInput.value = "Lỗi! Không lấy được mã.";
-        return null;
-    } finally {
-        startBtn.disabled = false;
-    }
-};
-  
-  
-  
-
-    // Xử lý nút Bypass
-    startBtn.addEventListener('click', async () => {
-        const recognizedUrl = await recognizeTrafficURL();
-        if (recognizedUrl && recognizedUrl !== "Chưa nhận diện được URL!") {
-            const code = await findCode();
-            if (!code) {
-                searchInput.value = "Không tìm thấy mã!";
-            }
-        } else {
-            searchInput.value = "Không nhận diện được link!";
-        }
-    });
-
-    // Tự động nhận diện khi tải trang
-    recognizeTrafficURL();
 
     // Ẩn/hiện tab
     const toggleTab = () => {
@@ -476,7 +451,7 @@ const findCode = async (recognizedUrl) => {
             blackTab.style.left = '50%';
             blackTab.style.boxShadow = '0 4px 8px rgba(0, 0, 0, 0.3)';
             blackTab.style.padding = '0';
-            blackTab.style.width = '93%';
+            blackTab.style.width = '400px';
             blackTab.style.height = '53%';
             blackTab.style.backgroundImage = 'none';
             blackTab.querySelectorAll('*').forEach(child => {

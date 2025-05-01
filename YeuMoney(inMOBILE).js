@@ -290,7 +290,7 @@
         container.style.border = '1px solid #444';
         container.style.padding = '0';
         container.style.zIndex = '9999';
-        container.style.width = '83%';
+        container.style.width = '93%';
         container.style.boxShadow = '0 4px 8px rgba(0, 0, 0, 0.5)';
         container.style.borderRadius = '50%';
         container.style.transform = 'scale(0.142)';
@@ -354,8 +354,8 @@
                 container.style.left = '20px';
                 container.style.boxShadow = '0 4px 8px rgba(0, 0, 0, 5)';
                 container.style.padding = '0';
-                container.style.width = '420px';
-                container.style.height = '420px';
+                container.style.width = '400px';
+                container.style.height = '400px';
                 container.querySelectorAll('*').forEach(child => {
                     if (child !== closeBtn) {
                         child.dataset.originalDisplay = child.style.display || window.getComputedStyle(child).display;
@@ -382,7 +382,7 @@
                 container.style.left = '50%';
                 container.style.boxShadow = '0px 4px 6px rgba(0,0,0,0.1)';
                 container.style.padding = '10px';
-                container.style.width = '83%';
+                container.style.width = '93%';
                 container.style.height = 'auto';
                 container.style.backgroundImage = 'none';
                 container.querySelectorAll('*').forEach(child => {

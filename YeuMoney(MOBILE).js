@@ -388,7 +388,7 @@
                 container.querySelectorAll('*').forEach(child => {
                     if (child !== closeBtn) {
                         child.style.display = child.dataset.originalDisplay || 'block';
-                        child.style.transition = 'opacity 0.2s ease-in-out';
+                        child.style.transition = 'opacity 0s ease-in-out';
                         child.style.opacity = '0';
                         setTimeout(() => {
                             child.style.opacity = '1';
